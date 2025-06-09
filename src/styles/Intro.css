@@ -1,0 +1,79 @@
+/* General body reset for full-page layout */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Background canvas should stay fixed and full screen */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Main container centers all content */
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical center */
+  align-items: center;     /* Horizontal center */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Top intro texts */
+.top-prof h1 {
+  margin: 5px 0;
+  font-size: 3rem;
+  color: white;
+}
+
+/* Profession container */
+.prof {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 4vw; /* responsive font size */
+  margin-top: 20px;
+}
+
+/* Responsive headline text */
+.prof h1, .prof h2 {
+  margin: 0;
+  color: white;
+}
+
+/* Animated text fade + color */
+.fade-text {
+  transition: opacity 0.5s ease-in-out, color 0.3s ease-in-out;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* Optional: Responsive tweaks for smaller devices */
+@media (max-width: 600px) {
+  .prof {
+    font-size: 8vw;
+  }
+
+  .top-prof h1 {
+    font-size: 1.5rem;
+  }
+}
