@@ -5,6 +5,7 @@ body, html, #root {
   height: 100%;
   width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scrollbar-width: none;
 }
 
 /* Background canvas should stay fixed and full screen */

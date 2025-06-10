@@ -1,0 +1,26 @@
+.heading{
+    color: rgb(251, 54, 0);
+}
+
+.container h1{
+    font-size: 50px;
+}
+.container p{
+    font-size: 30px;
+}
+.container{
+    display: grid;
+    padding: 30px;
+    justify-content: end;
+    margin-right: 50%;
+    
+}
+.container .info{
+    display: flex;
+    
+}
+.container {
+  opacity: 0; /* Start invisible */
+  transform: translateY(40px);
+}
+
