@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -36,15 +37,20 @@ const CanvasScene = () => {
     light3.position.set(2, 6, 1);
     scene.add(light1, light2, light3);
 
-    // OrbitControls (optional)
+    // OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enableZoom = false;
     controls.target.set(5, 0, 0);
     controls.update();
 
-    // Load GLTF Model
+    // Load GLTF with DracoLoader
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/draco/'); // <-- You must place decoder files here
+
     const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+
     let mixer;
 
     loader.load('/models/animation1.glb', (gltf) => {
@@ -57,14 +63,16 @@ const CanvasScene = () => {
       gltf.animations.forEach((clip) => {
         mixer.clipAction(clip).play();
       });
+    }, undefined, (error) => {
+      console.error('GLTF load error:', error);
     });
 
-    // Camera scroll animation: from 0vh to 200vh
+    // Scroll-triggered camera animation
     gsap.to(camera.position, {
       scrollTrigger: {
         trigger: document.body,
         start: 'top top',
-        end: '+=750vh', // Changed from 100vh to 200vh
+        end: '+=750vh',
         scrub: true,
       },
       x: 5,

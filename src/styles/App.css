@@ -1,3 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: #000; /* Or match your 3D canvas background */
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
